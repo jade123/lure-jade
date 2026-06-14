@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LURE FISHING</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app" class="site-shell" aria-live="polite"></div>
+
+    <div class="video-modal" data-modal hidden>
+      <button class="modal-close" type="button" data-close aria-label="关闭视频">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
+      </button>
+      <div class="modal-panel">
+        <video controls playsinline data-modal-video></video>
+        <p data-modal-title></p>
+      </div>
+    </div>
+
+    <div class="list-modal" data-video-list-modal hidden>
+      <button class="modal-close" type="button" data-close-video-list aria-label="关闭视频列表">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
+      </button>
+      <div class="list-panel" role="dialog" aria-modal="true" aria-labelledby="video-list-title">
+        <div class="list-head">
+          <h2 id="video-list-title">全部视频</h2>
+        </div>
+        <div class="video-list" data-video-list></div>
+      </div>
+    </div>
+
+    <div class="image-modal" data-image-modal hidden>
+      <button class="modal-close" type="button" data-close-image aria-label="关闭图片预览">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
+      </button>
+      <button class="image-nav image-nav-prev" type="button" data-preview-prev aria-label="上一张图片">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
+      </button>
+      <img data-preview-image alt="精选图片预览" />
+      <button class="image-nav image-nav-next" type="button" data-preview-next aria-label="下一张图片">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+      </button>
+    </div>
+
+    <div class="about-modal" data-about-modal hidden>
+      <button class="modal-close" type="button" data-close-about aria-label="关闭关于我">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
+      </button>
+      <div class="about-panel" role="dialog" aria-modal="true" aria-labelledby="about-modal-title">
+        <h2 id="about-modal-title" data-about-title></h2>
+        <a data-about-link target="_blank" rel="noreferrer">
+          <img data-about-image alt="关于我二维码" />
+          <span data-about-empty></span>
+        </a>
+        <p data-about-description></p>
+      </div>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

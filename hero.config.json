@@ -1,0 +1,7 @@
+{
+   "interval": 100000000,
+  "images": [
+    "assets/images/fist.png"
+  ],
+  "video": "assets/videos/10.mov"
+}

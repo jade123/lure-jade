@@ -1,0 +1,140 @@
+{
+  "brand": {
+    "name": "LURE",
+    "subline": "FISHING",
+    "tagline": "享受路亚，享受每一次抛投。"
+  },
+  "navigation": [
+    {
+      "label": "首页",
+      "href": "#home",
+      "active": true
+    },
+    {
+      "label": "视频",
+      "href": "#videos"
+    },
+    {
+      "label": "图集",
+      "href": "#gallery"
+    },
+    {
+      "label": "我的抖音",
+      "href": "https://www.douyin.com/user/self?modal_id=7558717423379139899&showSubTab=video&showTab=post"
+    },
+    {
+      "label": "关于我",
+      "href": "#about"
+    }
+  ],
+  "social": [
+    {
+      "type": "instagram",
+      "label": "Instagram",
+      "href": "https://www.douyin.com/user/self?modal_id=7558717423379139899&showSubTab=video&showTab=post"
+    },
+    {
+      "type": "youtube",
+      "label": "YouTube",
+      "href": "https://www.douyin.com/user/self?modal_id=7558717423379139899&showSubTab=video&showTab=post"
+    }
+  ],
+  "hero": {
+    "eyebrow": "最新视频",
+    "title": "雷强实战",
+    "description": "清晨的第一竿，水面炸裂的一瞬间。",
+    "ctaLabel": "立即观看"
+  },
+  "sections": {
+    "latest": {
+      "title": "最新内容",
+      "linkLabel": "查看全部"
+    },
+    "gallery": {
+      "title": "精选图集"
+    }
+  },
+  "about": {
+    "qrImage": "assets/images/dyewm.jpg",
+    "link": "https://www.douyin.com/user/self?modal_id=7518568325020060988&showSubTab=video&showTab=post",
+    "title": "关于我",
+    "description": "扫码或点击二维码查看更多内容"
+  },
+
+  "homeVideoIndexes": [
+    10,
+    8,
+    4
+  ],
+  "videoDefaultImage": "assets/bfq.png",
+  "videos": [
+    {
+      "image": "assets/images/1.jpg",
+      "video": "assets/videos/1.MOV"
+    },
+    {
+      "image": "assets/images/2.jpg",
+      "video": "assets/videos/2.MOV"
+    },
+    {
+      "video": "assets/videos/3.MOV"
+    },
+    {
+      "video": "assets/videos/4.MOV"
+    },
+    {
+      "image": "assets/images/5.jpg",
+      "video": "assets/videos/5.MOV"
+    },
+    {
+      "image": "assets/images/6.jpg",
+      "video": "assets/videos/6.MOV"
+    },
+    {
+      "image": "assets/images/7.jpg",
+      "video": "assets/videos/7.MOV"
+    },
+    {
+      "video": "assets/videos/8.MOV"
+    },
+    {
+      "image": "assets/images/9.jpg",
+      "video": "assets/videos/9.mov"
+    },
+    {
+      "image": "assets/images/10.jpg",
+      "video": "assets/videos/10.mov"
+    },
+    {
+      "image": "assets/images/11.jpg",
+      "video": "assets/videos/11.mov"
+    }
+  ],
+  "featuredImages": {
+    "interval": 10000,
+    "displayCount": 4,
+    "images": [
+      "assets/images/featuredImage/IMG_1384.jpeg",
+      "assets/images/featuredImage/IMG_1387.jpeg",
+      "assets/images/featuredImage/IMG_1470.jpeg",
+      "assets/images/featuredImage/IMG_1471.jpeg",
+      "assets/images/featuredImage/IMG_1496.jpeg",
+      "assets/images/featuredImage/IMG_1499.jpeg",
+      "assets/images/featuredImage/IMG_1890.jpeg",
+      "assets/images/featuredImage/IMG_1891.jpeg",
+      "assets/images/featuredImage/IMG_1948.jpeg",
+      "assets/images/featuredImage/IMG_1950.jpeg",
+      "assets/images/featuredImage/IMG_2045.jpeg",
+      "assets/images/featuredImage/IMG_2046.jpeg",
+      "assets/images/featuredImage/IMG_2143.jpeg",
+      "assets/images/featuredImage/IMG_2640.jpeg",
+      "assets/images/featuredImage/IMG_2996.jpeg",
+      "assets/images/featuredImage/IMG_3150.jpeg",
+      "assets/images/featuredImage/IMG_3153.jpeg",
+      "assets/images/featuredImage/IMG_3373.jpeg",
+      "assets/images/featuredImage/IMG_3906.jpeg",
+      "assets/images/featuredImage/dji_export_20250510_photo_0008.jpeg",
+      "assets/images/featuredImage/dji_export_20250510_photo_0009.jpeg"
+    ]
+  }
+}
