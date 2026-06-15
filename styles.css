@@ -631,6 +631,7 @@ button {
 .video-modal.is-fullscreen-fallback .modal-panel video {
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   border-radius: 0;
   object-fit: contain;
 }
@@ -1114,6 +1115,50 @@ button {
   .image-modal,
   .about-modal {
     padding: 18px;
+  }
+
+  .video-modal.is-fullscreen-fallback {
+    padding: 0;
+  }
+
+  .video-modal.is-fullscreen-fallback .modal-panel {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    align-content: center;
+  }
+
+  .video-modal.is-fullscreen-fallback .modal-panel video {
+    width: 100vw;
+    height: min(72vh, 100dvh);
+    max-height: 100vh;
+    max-height: 100dvh;
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+
+  .video-modal.is-fullscreen-fallback.is-portrait-video .modal-panel video {
+    width: auto;
+    max-width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    aspect-ratio: auto;
+  }
+
+  .video-modal.is-fullscreen-fallback.is-landscape-video .modal-panel video {
+    width: 100vw;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .video-modal.is-fullscreen-fallback .modal-panel p {
+    left: 14px;
+    right: 56px;
+    bottom: 14px;
+    overflow: hidden;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .modal-close {

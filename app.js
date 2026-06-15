@@ -436,11 +436,16 @@ function getHeroImages(heroConfig) {
 
 function openVideo(src, title) {
   if (!src) return;
+  videoModal.classList.remove("is-landscape-video", "is-portrait-video");
   modalVideo.src = src;
+  modalVideo.onloadedmetadata = () => {
+    videoModal.classList.toggle("is-portrait-video", modalVideo.videoHeight > modalVideo.videoWidth);
+    videoModal.classList.toggle("is-landscape-video", modalVideo.videoWidth >= modalVideo.videoHeight);
+  };
   modalTitle.textContent = title || "";
   videoModal.classList.add("is-fullscreen-fallback");
   videoModal.hidden = false;
-  requestFullscreen(modalVideo);
+  requestFullscreen(videoModal);
   modalVideo.play().catch(() => {});
 }
 
@@ -449,6 +454,8 @@ function closeVideo() {
   exitFullscreen(videoModal);
   videoModal.hidden = true;
   videoModal.classList.remove("is-fullscreen-fallback");
+  videoModal.classList.remove("is-landscape-video", "is-portrait-video");
+  modalVideo.onloadedmetadata = null;
   modalVideo.pause();
   modalVideo.removeAttribute("src");
   modalVideo.load();
