@@ -1,7 +1,7 @@
 {
-   "interval": 100000000,
+  "interval": 100000000,
   "images": [
-    "assets/images/fist.png"
+    "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/fist.png"
   ],
-  "video": "assets/videos/10.mov"
+  "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/10.mov"
 }

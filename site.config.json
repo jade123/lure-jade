@@ -55,86 +55,85 @@
     }
   },
   "about": {
-    "qrImage": "assets/images/dyewm.jpg",
+    "qrImage": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/dyewm.jpg",
     "link": "https://www.douyin.com/user/self?modal_id=7518568325020060988&showSubTab=video&showTab=post",
     "title": "关于我",
     "description": "扫码或点击二维码查看更多内容"
   },
-
   "homeVideoIndexes": [
     10,
     8,
     4
   ],
-  "videoDefaultImage": "assets/bfq.png",
+  "videoDefaultImage": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/bfq.png",
   "videos": [
     {
-      "image": "assets/images/1.jpg",
-      "video": "assets/videos/1.MOV"
+      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/1.jpg",
+      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/1.MOV"
     },
     {
-      "image": "assets/images/2.jpg",
-      "video": "assets/videos/2.MOV"
+      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/2.jpg",
+      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/2.MOV"
     },
     {
-      "video": "assets/videos/3.MOV"
+      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/3.MOV"
     },
     {
-      "video": "assets/videos/4.MOV"
+      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/4.MOV"
     },
     {
-      "image": "assets/images/5.jpg",
-      "video": "assets/videos/5.MOV"
+      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/5.jpg",
+      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/5.MOV"
     },
     {
-      "image": "assets/images/6.jpg",
-      "video": "assets/videos/6.MOV"
+      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/6.jpg",
+      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/6.MOV"
     },
     {
-      "image": "assets/images/7.jpg",
-      "video": "assets/videos/7.MOV"
+      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/7.jpg",
+      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/7.MOV"
     },
     {
-      "video": "assets/videos/8.MOV"
+      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/8.MOV"
     },
     {
-      "image": "assets/images/9.jpg",
-      "video": "assets/videos/9.mov"
+      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/9.jpg",
+      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/9.mov"
     },
     {
-      "image": "assets/images/10.jpg",
-      "video": "assets/videos/10.mov"
+      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/10.jpg",
+      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/10.mov"
     },
     {
-      "image": "assets/images/11.jpg",
-      "video": "assets/videos/11.mov"
+      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/11.jpg",
+      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/11.mov"
     }
   ],
   "featuredImages": {
     "interval": 10000,
     "displayCount": 4,
     "images": [
-      "assets/images/featuredImage/IMG_1384.jpeg",
-      "assets/images/featuredImage/IMG_1387.jpeg",
-      "assets/images/featuredImage/IMG_1470.jpeg",
-      "assets/images/featuredImage/IMG_1471.jpeg",
-      "assets/images/featuredImage/IMG_1496.jpeg",
-      "assets/images/featuredImage/IMG_1499.jpeg",
-      "assets/images/featuredImage/IMG_1890.jpeg",
-      "assets/images/featuredImage/IMG_1891.jpeg",
-      "assets/images/featuredImage/IMG_1948.jpeg",
-      "assets/images/featuredImage/IMG_1950.jpeg",
-      "assets/images/featuredImage/IMG_2045.jpeg",
-      "assets/images/featuredImage/IMG_2046.jpeg",
-      "assets/images/featuredImage/IMG_2143.jpeg",
-      "assets/images/featuredImage/IMG_2640.jpeg",
-      "assets/images/featuredImage/IMG_2996.jpeg",
-      "assets/images/featuredImage/IMG_3150.jpeg",
-      "assets/images/featuredImage/IMG_3153.jpeg",
-      "assets/images/featuredImage/IMG_3373.jpeg",
-      "assets/images/featuredImage/IMG_3906.jpeg",
-      "assets/images/featuredImage/dji_export_20250510_photo_0008.jpeg",
-      "assets/images/featuredImage/dji_export_20250510_photo_0009.jpeg"
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_1384.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_1387.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_1470.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_1471.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_1496.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_1499.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_1890.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_1891.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_1948.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_1950.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_2045.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_2046.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_2143.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_2640.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_2996.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_3150.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_3153.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_3373.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/IMG_3906.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/dji_export_20250510_photo_0008.jpeg",
+      "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/dji_export_20250510_photo_0009.jpeg"
     ]
   }
 }
