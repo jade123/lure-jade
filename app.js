@@ -3,7 +3,6 @@ const HERO_CONFIG_URL = "hero.config.json";
 const DEFAULT_HOME_VIDEO_INDEXES = [0, 1, 2];
 const DEFAULT_VIDEO_IMAGE = "assets/bfq.png";
 const DEFAULT_HERO_INTERVAL = 3000;
-const DEFAULT_GALLERY_INTERVAL = 3000;
 
 const icons = {
   instagram:
@@ -49,7 +48,6 @@ let activePreviewIndex = 0;
 let galleryTouchStartX = 0;
 let heroImageIndex = 0;
 let heroTimer;
-let galleryTimer;
 
 async function init() {
   try {
@@ -61,7 +59,6 @@ async function init() {
     renderVideoList(activeConfig);
     bindEvents();
     startHeroCarousel();
-    startGalleryAutoSlide();
   } catch (error) {
     app.innerHTML = `
       <main class="config-error">
@@ -349,13 +346,11 @@ function bindEvents() {
 
     if (event.target.closest("[data-gallery-prev]")) {
       moveGallery(-getFeaturedDisplayCount(activeConfig));
-      restartGalleryAutoSlide();
       return;
     }
 
     if (event.target.closest("[data-gallery-next]")) {
       moveGallery(getFeaturedDisplayCount(activeConfig));
-      restartGalleryAutoSlide();
       return;
     }
 
@@ -375,7 +370,6 @@ function bindEvents() {
     const distance = event.changedTouches[0].clientX - galleryTouchStartX;
     if (Math.abs(distance) < 36) return;
     moveGallery(distance > 0 ? -getFeaturedDisplayCount(activeConfig) : getFeaturedDisplayCount(activeConfig));
-    restartGalleryAutoSlide();
   });
 
   videoList.addEventListener("click", (event) => {
@@ -440,28 +434,21 @@ function getHeroImages(heroConfig) {
   return heroConfig.image ? [heroConfig.image] : [];
 }
 
-function startGalleryAutoSlide() {
-  clearInterval(galleryTimer);
-  if (featuredOrder.length <= getFeaturedDisplayCount(activeConfig)) return;
-  galleryTimer = setInterval(() => {
-    moveGallery(getFeaturedDisplayCount(activeConfig));
-  }, Number(activeConfig.featuredImages && activeConfig.featuredImages.interval) || DEFAULT_GALLERY_INTERVAL);
-}
-
-function restartGalleryAutoSlide() {
-  startGalleryAutoSlide();
-}
-
 function openVideo(src, title) {
   if (!src) return;
   modalVideo.src = src;
   modalTitle.textContent = title || "";
+  videoModal.classList.add("is-fullscreen-fallback");
   videoModal.hidden = false;
+  requestFullscreen(modalVideo);
+  modalVideo.play().catch(() => {});
 }
 
 function closeVideo() {
   if (videoModal.hidden) return;
+  exitFullscreen(videoModal);
   videoModal.hidden = true;
+  videoModal.classList.remove("is-fullscreen-fallback");
   modalVideo.pause();
   modalVideo.removeAttribute("src");
   modalVideo.load();
@@ -479,7 +466,9 @@ function openImage(index) {
   if (!featuredOrder.length) return;
   activePreviewIndex = wrapIndex(index, featuredOrder.length);
   previewImage.src = featuredOrder[activePreviewIndex];
+  imageModal.classList.add("is-fullscreen-fallback");
   imageModal.hidden = false;
+  requestFullscreen(imageModal);
 }
 
 function movePreview(direction) {
@@ -489,7 +478,9 @@ function movePreview(direction) {
 }
 
 function closeImage() {
+  exitFullscreen(imageModal);
   imageModal.hidden = true;
+  imageModal.classList.remove("is-fullscreen-fallback");
   previewImage.removeAttribute("src");
 }
 
@@ -516,6 +507,27 @@ function closeAbout() {
 
 function wrapIndex(index, length) {
   return ((index % length) + length) % length;
+}
+
+function requestFullscreen(element) {
+  if (!element) return;
+  if (element.webkitEnterFullscreen) {
+    element.webkitEnterFullscreen();
+    return;
+  }
+  const request = element.requestFullscreen || element.webkitRequestFullscreen || element.msRequestFullscreen;
+  if (!request) return;
+  const result = request.call(element);
+  if (result && result.catch) result.catch(() => {});
+}
+
+function exitFullscreen(owner) {
+  const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+  if (!fullscreenElement || (owner && fullscreenElement !== owner && !owner.contains(fullscreenElement))) return;
+  const exit = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+  if (!exit) return;
+  const result = exit.call(document);
+  if (result && result.catch) result.catch(() => {});
 }
 
 function escapeHtml(value = "") {
