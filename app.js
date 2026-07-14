@@ -27,6 +27,8 @@ const closeModalButton = document.querySelector("[data-close]");
 const videoListModal = document.querySelector("[data-video-list-modal]");
 const videoList = document.querySelector("[data-video-list]");
 const closeVideoListButton = document.querySelector("[data-close-video-list]");
+const videoPrevButton = document.querySelector("[data-video-prev]");
+const videoNextButton = document.querySelector("[data-video-next]");
 const imageModal = document.querySelector("[data-image-modal]");
 const previewImage = document.querySelector("[data-preview-image]");
 const closeImageButton = document.querySelector("[data-close-image]");
@@ -46,6 +48,7 @@ let featuredOrder = [];
 let galleryStartIndex = 0;
 let activePreviewIndex = 0;
 let galleryTouchStartX = 0;
+let activeVideoIndex = -1;
 let heroImageIndex = 0;
 let heroTimer;
 
@@ -117,7 +120,7 @@ function renderHero(config, heroConfig) {
           <p class="eyebrow">${escapeHtml(config.hero.eyebrow)}</p>
           <h1>${escapeHtml(config.hero.title)}</h1>
           <p class="hero-description">${escapeHtml(config.hero.description)}</p>
-          <button class="watch-button" type="button" data-video="${escapeAttr(heroConfig.video || "")}" data-title="${escapeAttr(config.hero.title)}">
+          <button class="watch-button" type="button" data-video-index="0" data-video="${escapeAttr(heroConfig.video || "")}" data-title="${escapeAttr(config.hero.title)}">
             ${icons.play}
             <span>${escapeHtml(config.hero.ctaLabel)}</span>
           </button>
@@ -151,7 +154,7 @@ function renderVideoCard(item, index, config) {
     <article class="video-card ${index === 0 ? "is-featured" : ""}">
       <div class="media-frame">
         <img src="${escapeAttr(getVideoImage(item, config))}" alt="${escapeAttr(title)}" loading="${index === 0 ? "eager" : "lazy"}" />
-        <button class="play-overlay" type="button" data-video="${escapeAttr(item.video || "")}" data-title="${escapeAttr(title)}" aria-label="播放 ${escapeAttr(title)}">
+        <button class="play-overlay" type="button" data-video-index="${getVideoIndex(item)}" data-video="${escapeAttr(item.video || "")}" data-title="${escapeAttr(title)}" aria-label="播放 ${escapeAttr(title)}">
           <span class="play-circle">${icons.play}</span>
         </button>
       </div>
@@ -284,7 +287,7 @@ function renderVideoList(config) {
     .map((item, index) => {
       const title = getVideoTitle(item, index);
       return `
-        <button class="video-list-item" type="button" data-video="${escapeAttr(item.video || "")}" data-title="${escapeAttr(title)}">
+        <button class="video-list-item" type="button" data-video-index="${index}" data-video="${escapeAttr(item.video || "")}" data-title="${escapeAttr(title)}">
           <span class="video-list-cover">
             <img src="${escapeAttr(getVideoImage(item, config))}" alt="${escapeAttr(title)}" loading="lazy" />
           </span>
@@ -304,6 +307,36 @@ function getVideoImage(item, config) {
 
 function getVideoTitle(item, index) {
   return (item && item.title) || `视频 ${index + 1}`;
+}
+
+function getVideoIndex(item) {
+  if (!activeConfig || !Array.isArray(activeConfig.videos)) return -1;
+  return activeConfig.videos.indexOf(item);
+}
+
+function getVideoByIndex(index) {
+  if (!activeConfig || !Array.isArray(activeConfig.videos) || !activeConfig.videos.length) return null;
+  const wrappedIndex = wrapIndex(index, activeConfig.videos.length);
+  const item = activeConfig.videos[wrappedIndex];
+  return item ? { item, index: wrappedIndex } : null;
+}
+
+function updateVideoNavState() {
+  const total = activeConfig && Array.isArray(activeConfig.videos) ? activeConfig.videos.length : 0;
+  const disabled = total <= 1 || activeVideoIndex < 0;
+  videoPrevButton.disabled = disabled;
+  videoNextButton.disabled = disabled;
+}
+
+function openVideoByIndex(index) {
+  const next = getVideoByIndex(index);
+  if (!next) return;
+  openVideo(next.item.video, getVideoTitle(next.item, next.index), next.index);
+}
+
+function moveVideo(direction) {
+  if (activeVideoIndex < 0) return;
+  openVideoByIndex(activeVideoIndex + direction);
 }
 
 function getRandomFeaturedImages(config) {
@@ -334,7 +367,7 @@ function bindEvents() {
 
     const videoButton = event.target.closest("[data-video]");
     if (videoButton) {
-      openVideo(videoButton.dataset.video, videoButton.dataset.title);
+      openVideo(videoButton.dataset.video, videoButton.dataset.title, Number(videoButton.dataset.videoIndex));
       closeVideoList();
       return;
     }
@@ -375,7 +408,7 @@ function bindEvents() {
   videoList.addEventListener("click", (event) => {
     const videoButton = event.target.closest("[data-video]");
     if (videoButton) {
-      openVideo(videoButton.dataset.video, videoButton.dataset.title);
+      openVideo(videoButton.dataset.video, videoButton.dataset.title, Number(videoButton.dataset.videoIndex));
       closeVideoList();
     }
   });
@@ -386,6 +419,8 @@ function bindEvents() {
   closeAboutButton.addEventListener("click", closeAbout);
   previewPrevButton.addEventListener("click", () => movePreview(-1));
   previewNextButton.addEventListener("click", () => movePreview(1));
+  videoPrevButton.addEventListener("click", () => moveVideo(-1));
+  videoNextButton.addEventListener("click", () => moveVideo(1));
 
   videoModal.addEventListener("click", (event) => {
     if (event.target === videoModal) closeVideo();
@@ -400,6 +435,8 @@ function bindEvents() {
     if (event.target === aboutModal) closeAbout();
   });
   document.addEventListener("keydown", (event) => {
+    if (!videoModal.hidden && event.key === "ArrowLeft") moveVideo(-1);
+    if (!videoModal.hidden && event.key === "ArrowRight") moveVideo(1);
     if (!imageModal.hidden && event.key === "ArrowLeft") movePreview(-1);
     if (!imageModal.hidden && event.key === "ArrowRight") movePreview(1);
     if (event.key === "Escape") {
@@ -434,9 +471,13 @@ function getHeroImages(heroConfig) {
   return heroConfig.image ? [heroConfig.image] : [];
 }
 
-function openVideo(src, title) {
+function openVideo(src, title, index = -1) {
   if (!src) return;
+  activeVideoIndex = Number.isFinite(index) ? index : -1;
   videoModal.classList.remove("is-landscape-video", "is-portrait-video");
+  modalVideo.pause();
+  modalVideo.removeAttribute("src");
+  modalVideo.load();
   modalVideo.src = src;
   modalVideo.onloadedmetadata = () => {
     videoModal.classList.toggle("is-portrait-video", modalVideo.videoHeight > modalVideo.videoWidth);
@@ -445,6 +486,7 @@ function openVideo(src, title) {
   modalTitle.textContent = title || "";
   videoModal.classList.add("is-fullscreen-fallback");
   videoModal.hidden = false;
+  updateVideoNavState();
   requestFullscreen(videoModal);
   modalVideo.play().catch(() => {});
 }
@@ -456,6 +498,8 @@ function closeVideo() {
   videoModal.classList.remove("is-fullscreen-fallback");
   videoModal.classList.remove("is-landscape-video", "is-portrait-video");
   modalVideo.onloadedmetadata = null;
+  activeVideoIndex = -1;
+  updateVideoNavState();
   modalVideo.pause();
   modalVideo.removeAttribute("src");
   modalVideo.load();

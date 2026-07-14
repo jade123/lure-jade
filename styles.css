@@ -652,12 +652,63 @@ button {
 
 .modal-close {
   position: fixed;
-  top: 28px;
-  right: 28px;
-  z-index: 22;
-  width: 42px;
-  height: 42px;
+  top: 24px;
+  right: 24px;
+  z-index: 30;
+  width: 58px;
+  height: 58px;
   color: var(--white);
+  background: rgba(0, 0, 0, 0.72);
+  border: 2px solid rgba(255, 255, 255, 0.76);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.45);
+}
+
+.modal-close svg {
+  width: 28px;
+  height: 28px;
+  stroke-width: 2.8;
+}
+
+.video-nav {
+  position: fixed;
+  top: 50%;
+  z-index: 24;
+  display: grid;
+  width: 62px;
+  height: 86px;
+  place-items: center;
+  color: var(--white);
+  background: rgba(0, 0, 0, 0.54);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 999px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.36);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.video-nav:hover,
+.video-nav:focus-visible {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.78);
+  outline: none;
+}
+
+.video-nav:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+}
+
+.video-nav svg {
+  width: 34px;
+  height: 34px;
+}
+
+.video-nav-prev {
+  left: 28px;
+}
+
+.video-nav-next {
+  right: 28px;
 }
 
 .list-panel {
@@ -1162,7 +1213,25 @@ button {
   }
 
   .modal-close {
-    top: 16px;
+    top: 14px;
+    right: 14px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .video-nav {
+    top: auto;
+    bottom: 74px;
+    width: 52px;
+    height: 52px;
+    transform: none;
+  }
+
+  .video-nav-prev {
+    left: 16px;
+  }
+
+  .video-nav-next {
     right: 16px;
   }
 
