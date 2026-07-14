@@ -487,13 +487,11 @@ function openVideo(src, title, index = -1) {
   videoModal.classList.add("is-fullscreen-fallback");
   videoModal.hidden = false;
   updateVideoNavState();
-  requestFullscreen(videoModal);
   modalVideo.play().catch(() => {});
 }
 
 function closeVideo() {
   if (videoModal.hidden) return;
-  exitFullscreen(videoModal);
   videoModal.hidden = true;
   videoModal.classList.remove("is-fullscreen-fallback");
   videoModal.classList.remove("is-landscape-video", "is-portrait-video");
