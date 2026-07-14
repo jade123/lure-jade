@@ -69,14 +69,17 @@
   "videos": [
     {
       "title": "最新视频 01",
+      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/222.jpg",
       "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/222.mov"
     },
     {
       "title": "最新视频 02",
+      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/333.jpg",
       "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/333.mov"
     },
     {
       "title": "最新视频 03",
+      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/444.jpg",
       "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/444.mov"
     },
     {
