@@ -384,7 +384,7 @@ function updateVideoNavState() {
 function openVideoByIndex(index) {
   const next = getVideoByIndex(index);
   if (!next) return;
-  openVideo(next.item.video, getVideoTitle(next.item, next.index), next.index);
+  openVideo(getVideoSrc(next.item, activeConfig), getVideoTitle(next.item, next.index), next.index);
 }
 
 function moveVideo(direction) {
