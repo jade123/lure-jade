@@ -1,7 +1,7 @@
 {
   "interval": 100000000,
   "images": [
-    "assets0---/images/home-cyber-lure.png"
+    "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/home-cyber-lure.png"
   ],
   "video": "717.mov"
 }
