@@ -86,10 +86,7 @@ function render(config, heroConfig) {
     ${renderHero(config, heroConfig)}
     <main class="content">
       ${renderLatest(config)}
-      <div class="divider"></div>
-      ${renderGallery(config)}
-      <div class="divider"></div>
-      ${renderDiary(config)}
+      ${renderFollow(config)}
     </main>
     ${renderFooter(config)}
   `;
@@ -97,6 +94,7 @@ function render(config, heroConfig) {
 
 function renderHero(config, heroConfig) {
   const heroImage = getHeroImages(heroConfig)[heroImageIndex] || heroConfig.image || "";
+  const heroVideo = resolveAssetUrl(heroConfig.video || "", "video", config);
   return `
     <header class="hero" id="home">
       <img class="hero-image" data-hero-image src="${escapeAttr(heroImage)}" alt="${escapeAttr(config.hero.title)}" />
@@ -120,9 +118,12 @@ function renderHero(config, heroConfig) {
           <p class="eyebrow">${escapeHtml(config.hero.eyebrow)}</p>
           <h1>${escapeHtml(config.hero.title)}</h1>
           <p class="hero-description">${escapeHtml(config.hero.description)}</p>
-          <button class="watch-button" type="button" data-video-index="0" data-video="${escapeAttr(heroConfig.video || "")}" data-title="${escapeAttr(config.hero.title)}">
+          <button class="watch-button" type="button" data-video-index="0" data-video="${escapeAttr(heroVideo)}" data-title="${escapeAttr(config.hero.title)}">
             ${icons.play}
             <span>${escapeHtml(config.hero.ctaLabel)}</span>
+          </button>
+          <button class="watch-button watch-button-secondary" type="button" data-open-about>
+            <span>关注抖音</span>
           </button>
         </div>
       </div>
@@ -135,31 +136,48 @@ function renderLatest(config) {
   return `
     <section id="videos" aria-labelledby="latest-title">
       ${renderSectionHead("latest-title", latest, "videos")}
-      <div class="video-grid">
-        ${getHomeVideos(config).map((item, index) => renderVideoCard(item, index, config)).join("")}
+      <div class="video-grid video-wall">
+        ${getVideoWall(config).map((item, index) => renderVideoCard(item, index, config)).join("")}
       </div>
     </section>
   `;
 }
 
-function getHomeVideos(config) {
-  const videos = config.videos || [];
-  const indexes = Array.isArray(config.homeVideoIndexes) && config.homeVideoIndexes.length ? config.homeVideoIndexes : DEFAULT_HOME_VIDEO_INDEXES;
-  return indexes.map((index) => videos[index]).filter(Boolean);
+function getVideoWall(config) {
+  return (config.videos || []).filter(Boolean);
 }
 
 function renderVideoCard(item, index, config) {
   const title = getVideoTitle(item, index);
+  const video = getVideoSrc(item, config);
   return `
     <article class="video-card ${index === 0 ? "is-featured" : ""}">
       <div class="media-frame">
         <img src="${escapeAttr(getVideoImage(item, config))}" alt="${escapeAttr(title)}" loading="${index === 0 ? "eager" : "lazy"}" />
-        <button class="play-overlay" type="button" data-video-index="${getVideoIndex(item)}" data-video="${escapeAttr(item.video || "")}" data-title="${escapeAttr(title)}" aria-label="播放 ${escapeAttr(title)}">
+        <button class="play-overlay" type="button" data-video-index="${getVideoIndex(item)}" data-video="${escapeAttr(video)}" data-title="${escapeAttr(title)}" aria-label="播放 ${escapeAttr(title)}">
           <span class="play-circle">${icons.play}</span>
         </button>
+        <span class="video-rank">${String(index + 1).padStart(2, "0")}</span>
+        ${index === 0 ? '<span class="video-badge">最新</span>' : ""}
       </div>
       <h3>${escapeHtml(title)}</h3>
     </article>
+  `;
+}
+
+function renderFollow(config) {
+  const about = config.about || {};
+  return `
+    <section class="follow-panel" id="follow" aria-label="关注抖音">
+      <div class="follow-copy">
+        <p>DOUYIN CREATOR</p>
+        <h2>更多实战干货，尽在抖音</h2>
+        <span>扫码关注 @路亚码农，看最新窗口、标点、装备和鱼口复盘。</span>
+      </div>
+      <button class="follow-qr" type="button" data-open-about aria-label="打开抖音二维码">
+        ${about.qrImage ? `<img src="${escapeAttr(about.qrImage)}" alt="路亚码农抖音二维码" loading="lazy" />` : "<span>抖音二维码</span>"}
+      </button>
+    </section>
   `;
 }
 
@@ -286,8 +304,9 @@ function renderVideoList(config) {
   videoList.innerHTML = (config.videos || [])
     .map((item, index) => {
       const title = getVideoTitle(item, index);
+      const video = getVideoSrc(item, config);
       return `
-        <button class="video-list-item" type="button" data-video-index="${index}" data-video="${escapeAttr(item.video || "")}" data-title="${escapeAttr(title)}">
+        <button class="video-list-item" type="button" data-video-index="${index}" data-video="${escapeAttr(video)}" data-title="${escapeAttr(title)}">
           <span class="video-list-cover">
             <img src="${escapeAttr(getVideoImage(item, config))}" alt="${escapeAttr(title)}" loading="lazy" />
           </span>
@@ -302,7 +321,41 @@ function renderVideoList(config) {
 }
 
 function getVideoImage(item, config) {
-  return (item && item.image) || config.videoDefaultImage || DEFAULT_VIDEO_IMAGE;
+  return resolveAssetUrl((item && item.image) || config.videoDefaultImage || DEFAULT_VIDEO_IMAGE, "image", config);
+}
+
+function getVideoSrc(item, config) {
+  return resolveAssetUrl(item && item.video, "video", config);
+}
+
+function resolveAssetUrl(value = "", type, config = activeConfig) {
+  if (!value || isExternalUrl(value) || value.startsWith("/") || value.startsWith("data:") || value.startsWith("blob:")) {
+    return value || "";
+  }
+
+  const assets = (config && config.assets) || {};
+  const baseUrl = trimTrailingSlash(assets.baseUrl || "");
+  const folder = type === "video" ? assets.videos : type === "image" ? assets.images : "";
+  const normalizedFolder = trimSlashes(folder || "");
+  const normalizedValue = trimLeadingSlash(value);
+
+  if (!baseUrl) {
+    return [normalizedFolder, normalizedValue].filter(Boolean).join("/");
+  }
+
+  return [baseUrl, normalizedFolder, normalizedValue].filter(Boolean).join("/");
+}
+
+function trimTrailingSlash(value = "") {
+  return String(value).replace(/\/+$/, "");
+}
+
+function trimLeadingSlash(value = "") {
+  return String(value).replace(/^\/+/, "");
+}
+
+function trimSlashes(value = "") {
+  return trimLeadingSlash(trimTrailingSlash(value));
 }
 
 function getVideoTitle(item, index) {
@@ -374,6 +427,11 @@ function bindEvents() {
 
     if (event.target.closest("[data-open-video-list]")) {
       openVideoList();
+      return;
+    }
+
+    if (event.target.closest("[data-open-about]")) {
+      openAbout();
       return;
     }
 

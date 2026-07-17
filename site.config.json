@@ -1,8 +1,8 @@
 {
   "brand": {
-    "name": "LURE",
-    "subline": "FISHING",
-    "tagline": "享受路亚，享受每一次抛投。"
+    "name": "路亚码农",
+    "subline": "DOUYIN LURE",
+    "tagline": "代码复盘路亚，视频记录每一次中鱼。"
   },
   "navigation": [
     {
@@ -13,10 +13,6 @@
     {
       "label": "视频",
       "href": "#videos"
-    },
-    {
-      "label": "图集",
-      "href": "#gallery"
     },
     {
       "label": "我的抖音",
@@ -40,18 +36,15 @@
     }
   ],
   "hero": {
-    "eyebrow": "最新视频",
-    "title": "雷强实战",
-    "description": "清晨的第一竿，水面炸裂的一瞬间。",
+    "eyebrow": "LURE VIDEO / DOUYIN",
+    "title": "路亚码农",
+    "description": "用实战视频记录每一次窗口期、标点选择和中鱼瞬间。",
     "ctaLabel": "立即观看"
   },
   "sections": {
     "latest": {
-      "title": "最新内容",
+      "title": "最新视频",
       "linkLabel": "查看全部"
-    },
-    "gallery": {
-      "title": "精选图集"
     }
   },
   "about": {
@@ -69,64 +62,64 @@
   "videos": [
     {
       "title": "最新视频 717",
-      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/717.jpg",
-      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/717.mov"
+      "image": "717.jpg",
+      "video": "717.mov"
     },
     {
       "title": "最新视频 01",
-      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/222.jpg",
-      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/222.mov"
+      "image": "222.jpg",
+      "video": "222.mov"
     },
     {
       "title": "最新视频 02",
-      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/333.jpg",
-      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/333.mov"
+      "image": "333.jpg",
+      "video": "333.mov"
     },
     {
       "title": "最新视频 03",
-      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/444.jpg",
-      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/444.mov"
+      "image": "444.jpg",
+      "video": "444.mov"
     },
     {
-      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/1.jpg",
-      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/1.MOV"
+      "image": "1.jpg",
+      "video": "1.MOV"
     },
     {
-      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/2.jpg",
-      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/2.MOV"
+      "image": "2.jpg",
+      "video": "2.MOV"
     },
     {
-      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/3.MOV"
+      "video": "3.MOV"
     },
     {
-      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/4.MOV"
+      "video": "4.MOV"
     },
     {
-      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/5.jpg",
-      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/5.MOV"
+      "image": "5.jpg",
+      "video": "5.MOV"
     },
     {
-      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/6.jpg",
-      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/6.MOV"
+      "image": "6.jpg",
+      "video": "6.MOV"
     },
     {
-      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/7.jpg",
-      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/7.MOV"
+      "image": "7.jpg",
+      "video": "7.MOV"
     },
     {
-      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/8.MOV"
+      "video": "8.MOV"
     },
     {
-      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/9.jpg",
-      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/9.mov"
+      "image": "9.jpg",
+      "video": "9.mov"
     },
     {
-      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/10.jpg",
-      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/10.mov"
+      "image": "10.jpg",
+      "video": "10.mov"
     },
     {
-      "image": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/11.jpg",
-      "video": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/videos/11.mov"
+      "image": "11.jpg",
+      "video": "11.mov"
     }
   ],
   "featuredImages": {
@@ -155,5 +148,10 @@
       "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/dji_export_20250510_photo_0008.jpeg",
       "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets/images/featuredImage/dji_export_20250510_photo_0009.jpeg"
     ]
+  },
+  "assets": {
+    "baseUrl": "https://companyweb-1310747364.cos.accelerate.myqcloud.com/jade/assets",
+    "images": "images",
+    "videos": "videos"
   }
 }
