@@ -2104,12 +2104,6 @@ body::before {
   filter: contrast(1.18) saturate(1.04) brightness(0.88) hue-rotate(172deg);
 }
 
-.video-wall .media-frame img,
-.video-wall .video-card:hover .media-frame img,
-.video-list-cover img {
-  filter: none;
-}
-
 .play-overlay .play-circle {
   color: #f8fff0;
   border-color: rgba(157, 255, 37, 0.86);
